@@ -1,0 +1,38 @@
+services:
+  mysq:
+    container_name: wordpress_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=wordpressdb
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    ports:
+      - 4000:3306
+    networks:
+      - my_network
+    volumes:
+      - db_data:/var/lib/mysql
+    image: mysql
+
+  wordpress:
+    container_name: wordpress_website
+    environment:
+      - WORDPRESS_DB_HOST=wordpress_db
+      - WORDPRESS_DB_NAME=wordpressdb
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+    volumes:
+      - wp_data:/var/www/html
+    ports:
+      - 80:80
+    networks:
+      - my_network
+    image: wordpress
+
+networks:
+  my_network:
+    external: true
+
+volumes:
+  db_data:
+  wp_data:

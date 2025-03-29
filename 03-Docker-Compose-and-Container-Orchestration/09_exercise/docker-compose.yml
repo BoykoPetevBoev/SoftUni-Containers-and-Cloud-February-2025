@@ -1,0 +1,9 @@
+services:
+  web:
+    ports:
+    - "8000:8000"
+    build: .
+    volumes:
+    - ./static:/app/staticfiles
+    environment:
+    - DEBUG:False

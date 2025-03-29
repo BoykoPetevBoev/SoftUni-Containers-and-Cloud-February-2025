@@ -64,3 +64,53 @@ docker run -d --name backend --network express-mongo --network react-express bac
 docker run -d --name frontend --network react-express -p 3000:3000 frontend_image
 
 ```
+
+# Exercise 6
+```
+```
+
+# Exercise 7
+```
+cd result
+
+docker build -t result .
+
+cd volt
+
+docker build -t volt .
+
+cd worker
+
+docker build -t worker .
+
+docker volume create database
+
+docker run -d --name redis --network backend redis
+
+docker run -d --name db  --network backend -v database:/var/lib/postgresql/data -e POSTGRES_PASSOWRD=postgres -e POSTGRES_USER=postgres postgres
+
+docker run -d --name volt --network frontend --network backend -p 5000:80 volt
+
+docker run -d --name result --network frontend --network backend -p 5001:80 result
+
+docker run -d --name worker --network backend worker
+
+docker network inspect backend 
+
+docker network inspect frontend
+
+```
+
+# Exercise 8
+```
+```
+
+# Exercise 9
+```
+docker build -t fruitipedia .
+
+docker run -p 8000:8000 fruitipedia
+```
+```
+docker compose up --build
+```

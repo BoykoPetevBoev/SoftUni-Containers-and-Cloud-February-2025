@@ -5,3 +5,8 @@ crash.log
 override.tf
 override.tf.json
 .terraform.lock.hcl
+*.exe
+LICENSE
+NOTICE
+*/alertmanager/data/
+*/prometheus/data/

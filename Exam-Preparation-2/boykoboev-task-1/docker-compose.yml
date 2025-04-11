@@ -1,0 +1,46 @@
+services:
+  mongo:
+    container_name: exam-prep-mongo-db
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - exam_prep_network
+    volumes:
+      - data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+
+  backend:
+    container_name: exam-prep-server
+    image: boevboyko/exam-prep-backend
+    ports:
+      - 80:80
+    networks:
+      - exam_prep_network
+    volumes:
+      - logs:/logs
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_USERNAME=mongoadmin
+      - MONGODB_PASSWORD=secret
+
+  frontend:
+    container_name: exam-prep-client
+    image: boevboyko/exam-prep-frontend
+    ports:
+      - 3000:3000
+    networks:
+      - exam_prep_network
+    depends_on:
+      - backend
+
+networks:
+  exam_prep_network:
+    name: exam_prep_network
+
+volumes:
+  data:
+  logs:

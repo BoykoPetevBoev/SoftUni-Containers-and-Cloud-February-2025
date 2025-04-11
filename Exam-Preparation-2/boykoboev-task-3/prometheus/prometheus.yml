@@ -16,7 +16,7 @@ scrape_configs:
     metrics_path: /probe
     static_configs:
       - targets: 
-        - http://softuni-web-app-exam-prep-2.azurewebsites.net/
+        - https://softuni-web-app-second-exam-prep-2.azurewebsites.net/
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

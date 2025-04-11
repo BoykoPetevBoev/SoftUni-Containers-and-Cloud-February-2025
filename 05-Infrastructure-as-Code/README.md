@@ -18,11 +18,15 @@ terraform validate
 Previews the changes Terraform will make to your infrastructure.
 ```
 terraform plan
+
+terraform plan -var-file="values.tfvars"
 ```
 
 Applies the changes to the infrastructure based on the plan.
 ```
 terraform apply
+
+terraform apply -var-file="values.tfvars"
 ```
 
 Displays the current state of the infrastructure.

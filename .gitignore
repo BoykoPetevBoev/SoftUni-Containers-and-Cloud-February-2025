@@ -8,5 +8,5 @@ override.tf.json
 *.exe
 LICENSE
 NOTICE
-*/alertmanager/data/
-*/prometheus/data/
+**/alertmanager/data/
+**/prometheus/data/
